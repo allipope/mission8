@@ -36,7 +36,7 @@ namespace mission8.Models
                         ApplicationID = 1,
                         Task = "Mission08 Project",
                         DueDate = "02-24-2023",
-                        Quandrant = 2,
+                        Quadrant = 2,
                         CategoryID = 2,
                         Completed = false,
                     }

@@ -18,7 +18,7 @@ namespace mission8.Models
         public string DueDate { get; set; }
 
         [Required]
-        public int Quandrant { get; set; }
+        public int Quadrant { get; set; }
 
         //foreign key
         [Required(ErrorMessage = "Please select a Category")]
