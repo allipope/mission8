@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Add Task";
+}
+
+@model mission8.Models.ApplicationResponse
+
+<h1>Add a task:</h1>
+
+<div>
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+
+        @*<input asp-for="ApplicationID" hidden />*@
+
+        <label asp-for="Task">Task:</label>
+        <input asp-for="Task" />
+        <br />
+
+        <label asp-for="DueDate">Due Date:</label>
+        <input asp-for="DueDate" />
+        <br />
+
+        <label asp-for="Quadrant">Quadrant:</label>
+        <input asp-for="Quadrant" />
+        <br />
+
+        <label asp-for="CategoryID">Category:</label>
+        <select asp-for="CategoryID">
+            <option value="">Choose a category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
+        </select>
+        <br />
+
+        <label asp-for="Completed">Completed:</label>
+        <input type="radio" asp-for="Completed"/>
+        <br />
+
+        <button type="submit">Add Movie</button>
+    </form>
+</div>
