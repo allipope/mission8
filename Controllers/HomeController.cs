@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using mission8.Models;
 using System;
@@ -11,27 +12,92 @@ namespace mission8.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private TaskApplicationContext taskContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        // Constructor
+        public HomeController(TaskApplicationContext x)
         {
-            _logger = logger;
+            taskContext = x;
         }
+
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+
+
+        [HttpGet]
+        public IActionResult TaskApplication()
         {
-            return View();
+            ViewBag.Categories = taskContext.Categories.ToList();
+
+            return View("TaskApplication", new ApplicationResponse());
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult TaskApplication (ApplicationResponse ar)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (ModelState.IsValid)
+            {
+                taskContext.Add(ar);
+                taskContext.SaveChanges();
+                return View("Index");
+            }
+
+            else
+            {
+                ViewBag.Categories = taskContext.Categories.ToList();
+                return View();
+            }
         }
+
+
+
+        [HttpGet]
+        public IActionResult Quadrants()
+        {
+            var tasks = taskContext.Responses
+                .Include(x => x.Category)
+                .ToList();
+            return View(tasks);
+        }
+
+
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Categories = taskContext.Categories.ToList();
+            var submission = taskContext.Responses.Single(x => x.ApplicationID == id);
+            return View("TaskApplication", submission);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ApplicationResponse ar)
+        {
+            taskContext.Update(ar);
+            taskContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var submission = taskContext.Responses.Single(x => x.ApplicationID == id);
+            return View(submission);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(ApplicationResponse ar)
+        {
+            taskContext.Responses.Remove(ar);
+            taskContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
