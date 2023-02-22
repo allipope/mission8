@@ -15,7 +15,7 @@ namespace mission8.Models
         [Required]
         public string Task { get; set; }
 
-        public string DueDate { get; set; }
+        public DateTime DueDate { get; set; }
 
         [Required]
         public int Quadrant { get; set; }
