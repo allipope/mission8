@@ -9,7 +9,42 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: white;
+  font-weight:bold;
+}
+
+a:hover {
+    color: white;
+    font-size: larger;
+}
+
+button {
+    background-color: #FFCA81;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    background: linear-gradient(to bottom, rgba(241,180,97,0.6) 0%,rgba(241,180,97,0.95) 100%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    font-size:larger;
+}
+
+fieldset {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    background-color: #9FAFB5;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.05) 100%);
+}
+
+h1 {
+    color: #0873B3;
 }
 
 .btn-primary {
@@ -59,8 +94,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #EFF9FF;
 }
 .footer {
   position: absolute;
