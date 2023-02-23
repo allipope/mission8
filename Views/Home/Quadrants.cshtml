@@ -1,0 +1,188 @@
+﻿@{            
+    ViewData["Title"] = "Quadrants";
+}
+
+@model List<ApplicationResponse>
+
+<html lang="en">
+<head>
+    <title>Bootstrap Online Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <div class="container-fluid py-3 justify-content-xl-center">
+        <h2 class="text-center">Stephen Covey's Time Management Matrix</h2>
+        <br>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="" alt="">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">Quadrant 1</h5>
+                    <h6 class="card-subtitle text-center">Urgent/Important</h6>
+                    <table class="table table-striped">
+                        <thead class="font-weight-bold">
+                            <tr>
+                                <td>Category</td>
+                                <td>Task</td>
+                                <td>Due Date</td>
+                                <td>Actions</td>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                @if (x.Quadrant == 1 && x.Completed == false)
+                                {
+                            <tr>
+                                <td>@x.Category.CategoryName</td>
+                                <td>@x.Task</td>
+                                <td>@x.DueDate</td>
+
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@x.ApplicationID">Edit</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Delete" asp-route-id="@x.ApplicationID">Delete</a>
+                                </td>
+                            </tr>
+                                }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="" alt="">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">Quadrant 2</h5>
+                    <h6 class="card-subtitle text-center">Not Urgent/Important</h6>
+                    <table class="table table-striped">
+                        <thead class="font-weight-bold">
+                            <tr>
+                                <td>Category</td>
+                                <td>Task</td>
+                                <td>Due Date</td>
+                                <td>Actions</td>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                @if (x.Quadrant == 2 && x.Completed == false)
+                                {
+                            <tr>
+                                <td>@x.Category.CategoryName</td>
+                                <td>@x.Task</td>
+                                <td>@x.DueDate</td>
+
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@x.ApplicationID">Edit</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Delete" asp-route-id="@x.ApplicationID">Delete</a>
+                                </td>
+                            </tr>
+                                }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="" alt="">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">Quadrant 3</h5>
+                    <h6 class="card-subtitle text-center">Urgent/Not Important</h6>
+                    <table class="table table-striped">
+                        <thead class="font-weight-bold">
+                            <tr>
+                                <td>Category</td>
+                                <td>Task</td>
+                                <td>Due Date</td>
+                                <td>Actions</td>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                @if (x.Quadrant == 3 && x.Completed == false)
+                                {
+                            <tr>
+                                <td>@x.Category.CategoryName</td>
+                                <td>@x.Task</td>
+                                <td>@x.DueDate</td>
+
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@x.ApplicationID">Edit</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Delete" asp-route-id="@x.ApplicationID">Delete</a>
+                                </td>
+                            </tr>
+                                }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="" alt="">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">Quadrant 4</h5>
+                    <h6 class="card-subtitle text-center">Not Urgent/Not Important</h6>
+                    <table class="table table-striped">
+                        <thead class="font-weight-bold">
+                            <tr>
+                                <td>Category</td>
+                                <td>Task</td>
+                                <td>Due Date</td>
+                                <td>Actions</td>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                @if (x.Quadrant == 4 && x.Completed == false)
+                                {
+                                    <tr>
+                                        <td>@x.Category.CategoryName</td>
+                                        <td>@x.Task</td>
+                                        <td>@x.DueDate</td>
+
+                                        <td>
+                                            <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@x.ApplicationID">Edit</a></td>
+                                            <td><a class="btn btn-outline-primary" asp-controller="Home" asp-action="Delete" asp-route-id="@x.ApplicationID">Delete</a>
+                                        </td>
+                                    </tr>
+                                }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

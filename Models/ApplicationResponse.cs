@@ -15,6 +15,7 @@ namespace mission8.Models
         [Required]
         public string Task { get; set; }
 
+        [DataType(DataType.Date)]
         public string DueDate { get; set; }
 
         [Required]

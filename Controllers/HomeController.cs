@@ -79,7 +79,7 @@ namespace mission8.Controllers
         {
             taskContext.Update(ar);
             taskContext.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Quadrants");
         }
 
 
@@ -96,7 +96,7 @@ namespace mission8.Controllers
         {
             taskContext.Responses.Remove(ar);
             taskContext.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Quadrants");
         }
 
     }
